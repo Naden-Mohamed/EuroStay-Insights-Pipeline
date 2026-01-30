@@ -15,8 +15,7 @@ class BookingFiltration:
 
         for star_value in star_values:
             for star_element in star_child_element:
-                # element = str(star_element.get_attribute('innerHTML')).strip()
-                # print(element)
+
                 if (
                     str(star_element.get_attribute("innerHTML")).strip()
                     == f"{star_value} stars"

@@ -1,12 +1,10 @@
 
 from booking import constant as const
 from booking.filters import BookingFiltration
-from booking.report import BookingReport
 from booking import helpers
 import os
 import datetime
 import csv
-from prettytable import PrettyTable
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import *
@@ -85,20 +83,17 @@ class Booking(webdriver.Chrome):
                 )
             )
 
-            # Scroll into view (VERY important on Booking)
             self.execute_script(
                 "arguments[0].scrollIntoView({block: 'center'});",
                 currency_button
             )
             time.sleep(1)
 
-            # Normal click often fails → try JS click
             self.execute_script("arguments[0].click();", currency_button)
 
         except TimeoutException:
             raise RuntimeError("Currency button not clickable")
 
-        # ---- SELECT CURRENCY ----
         currency_option = wait.until(
             EC.element_to_be_clickable(
                 ( By.XPATH,
@@ -120,12 +115,6 @@ class Booking(webdriver.Chrome):
 
         search_field.clear()
         search_field.send_keys(place_to_go)
-
-        # first_result = wait.until(
-        #     EC.element_to_be_clickable(
-        #         (By.CSS_SELECTOR, '#autocomplete-result-0') 
-        #     )
-        # )
 
         search_field.click()
         self.place = place_to_go
@@ -327,7 +316,6 @@ class Booking(webdriver.Chrome):
             if len(all_links) >= max_hotels:
                 break
 
-            # Scroll + load more
             self.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(3)
 
@@ -350,7 +338,7 @@ class Booking(webdriver.Chrome):
                 links.append(link.get_attribute("href"))
             except NoSuchElementException:
                 continue
-        return list(set(links))  # remove duplicates
+        return list(set(links))  
     
     def load_more_results(self):
         """

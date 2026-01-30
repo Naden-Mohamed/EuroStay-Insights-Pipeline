@@ -33,18 +33,19 @@ with Booking() as bot:
                 try:
                     hotel = scrape_hotel_page(bot, link, city)
                     hotels_dataset.append(hotel)
-                    # save_rooms(rooms, link)
+                    # ؟save_rooms(rooms, link)
 
                 except Exception as e:
                     print(" Failed hotel:", e)
                     continue
 
-                time.sleep(2)  # anti-bot safety
-
+                time.sleep(2) 
         save_hotels(hotels_dataset)
         print(f"Finished {city}")
 
-        # Scraping rooms only
+
+    # Scraping rooms only
+
     # for city in cities:
     #         print(f"\nScraping city: {city}")
     #         bot.reset_to_home()
