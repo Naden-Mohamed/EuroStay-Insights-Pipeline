@@ -20,6 +20,8 @@ The goal was to move beyond static datasets by enriching the "Airbnb Prices in E
 
 **Business Intelligence:** Developed **Power BI** reports to track high-level KPIs and answer critical business questions regarding market dominance and price-to-quality ratios.
 
+<img width="1154" height="664" alt="image" src="https://github.com/user-attachments/assets/571bfb99-86cd-4b69-a662-d4c8ed665dd2" />
+
 ## Tech Stack
 **Languages:** Python (Pandas, Selenium, Matplotlib, Seaborn), SQL
 
